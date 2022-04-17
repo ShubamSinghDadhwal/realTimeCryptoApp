@@ -6,6 +6,14 @@
   border-radius: 2px;
 }
 
+.highlighted {
+  background-color: #d3d3d3;
+}
+
+.card:focus {
+  background-color: aqua;
+}
+
 .card:hover {
   background-color: #d3d3d3;
 }
