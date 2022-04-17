@@ -24,8 +24,17 @@
   font-size: 18px;
 }
 
-.btn {
+.refresh-icon {
+  font-size: 18px;
+}
+
+.search-btn {
   padding: 7.5px;
   position: relative;
   left: 10px;
+}
+
+.reload-btn {
+  text-align: right;
+  margin-bottom: 10px;
 }

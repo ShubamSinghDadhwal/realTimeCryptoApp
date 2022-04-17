@@ -4,10 +4,12 @@ import './Sidebar.css'
 import SearchBar from './searchBar/SearchBar.view';
 
 function Sidebar(props) {
+  const { loading } = props;
   return (
+    !loading &&
     <div className="sidebar">
-      <SearchBar />
-      <TradingPairList {...props}/>
+      <SearchBar {...props} />
+      <TradingPairList {...props} />
     </div>
   )
 }
