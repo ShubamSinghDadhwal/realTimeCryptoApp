@@ -1,9 +1,9 @@
 import React from 'react';
 import TradingPairList from './tradingPairList/TradingPairList.view';
-import './Sidebar.css'
 import SearchBar from './searchBar/SearchBar.view';
+import './Sidebar.css'
 
-function Sidebar(props) {
+const Sidebar = (props) => {
   const { loading } = props;
   return (
     !loading &&
@@ -14,4 +14,4 @@ function Sidebar(props) {
   )
 }
 
-export default Sidebar
+export default Sidebar;

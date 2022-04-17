@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faArrowRotateRight } from '@fortawesome/free-solid-svg-icons';
-import './Searchbar.css';
 import { filterSearchResults } from './Searchbar.utils';
+import './Searchbar.css';
 
 const SearchBar = ({ cryptoJson, setCryptoJson, fetchData, setRefreshing }) => {
   const [searchParam, setSearchParam] = useState()
@@ -39,4 +39,4 @@ const SearchBar = ({ cryptoJson, setCryptoJson, fetchData, setRefreshing }) => {
   )
 }
 
-export default SearchBar
+export default SearchBar;

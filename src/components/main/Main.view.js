@@ -60,4 +60,4 @@ const Main = ({ queryParam, refreshing, setRefreshing }) => {
   )
 }
 
-export default Main
+export default Main;
