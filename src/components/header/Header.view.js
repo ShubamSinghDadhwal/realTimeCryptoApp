@@ -5,6 +5,7 @@ const Header = () => {
   return (
     <div className='header'>
       <h1>Live Crypto Trading Pairs</h1>
+      <p>(Auto updates after every 10sec)</p>
     </div>
   )
 }
