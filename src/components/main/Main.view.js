@@ -4,27 +4,26 @@ import {
   addProfitLossSign,
   getProfitLossClass,
   getTradingPairName,
-  roundTo2Digits,
+  roundTo3Digits,
 } from '../common/Common.utils';
 import './Main.css';
 
-const Main = ({ queryParam }) => {
+const Main = ({ queryParam, refreshing, setRefreshing }) => {
   
   const [tradePair, setTradePair] = useState();
-  const [loading2, setLoading2] = useState(true);
+  const [fetchingData, setFetchingData] = useState(true);
 
   useEffect(() => {
-    console.log("query param", queryParam)
+    setRefreshing(false);
     const fetchData = () => {
-      setLoading2(true);
+      setFetchingData(true);
       axios.get(`/v2/tickers?symbols=${queryParam}`)
         .then(response => {
-          console.log("ssd response", response)
-          setLoading2(false);
+          setFetchingData(false);
           setTradePair(response.data[0]);
         })
         .catch((error) => {
-          setLoading2(false);
+          setFetchingData(false);
         });
     };
     fetchData();
@@ -32,27 +31,31 @@ const Main = ({ queryParam }) => {
 
   return (
     <div className='main'>
-      <div className="flex-row symbol">{getTradingPairName(tradePair?.[0])}</div>
-      <div className="flex-row">
-        <p className="current-value">$ {roundTo2Digits(tradePair?.[7])}</p>
-        <p className={`${getProfitLossClass(0.02)} percent-change`}>{addProfitLossSign(roundTo2Digits(tradePair?.[6]))}%</p>
-      </div>
-      <hr />
-      <div className="flex-row">
-        <div className="flex-item">
-          <p>High</p>
-          <p>$ {roundTo2Digits(tradePair?.[9])}</p>
-        </div>
-        <div className="flex-item">
-          <p>Low</p>
-          <p>$ {roundTo2Digits(tradePair?.[10])}</p>
-        </div>
-        <div className="flex-item ">
-          <p>Volume</p>
-          <p>$ {roundTo2Digits(tradePair?.[8])}</p>
-        </div>
-        
-      </div>
+      {!fetchingData && tradePair && !refreshing &&
+        <>
+          <div className="flex-row symbol">{getTradingPairName(tradePair?.[0])}</div>
+          <div className="flex-row">
+            <p className="current-value">$ {roundTo3Digits(tradePair?.[7])}</p>
+            <p className={`${getProfitLossClass(0.02)} percent-change`}>{addProfitLossSign(roundTo3Digits(tradePair?.[6]))}%</p>
+          </div>
+          <hr />
+          <div className="flex-row">
+            <div className="flex-item">
+              <p>High</p>
+              <p>$ {roundTo3Digits(tradePair?.[9])}</p>
+            </div>
+            <div className="flex-item">
+              <p>Low</p>
+              <p>$ {roundTo3Digits(tradePair?.[10])}</p>
+            </div>
+            <div className="flex-item ">
+              <p>Volume</p>
+              <p>$ {roundTo3Digits(tradePair?.[8])}</p>
+            </div>
+          </div>
+        </>
+      }
+      {fetchingData && <div>Loading...</div>}
     </div>
   )
 }
