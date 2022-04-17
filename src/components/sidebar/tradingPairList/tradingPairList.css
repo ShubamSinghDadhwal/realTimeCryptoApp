@@ -1,0 +1,31 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #808080;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 2px;
+}
+
+.card:hover {
+  background-color: #d3d3d3;
+}
+
+.card-row {
+  justify-content: space-between;
+  display: flex;
+  padding: 0px 20px;
+}
+
+.card-item {
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.trading-pair-symbol, .current-value {
+  font-size: 17px;
+}
+
+.volume {
+  color: #7E7E7E;
+  font-size: 14px;
+}

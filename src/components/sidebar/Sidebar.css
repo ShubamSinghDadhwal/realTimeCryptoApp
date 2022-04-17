@@ -1,0 +1,4 @@
+.sidebar {
+  flex: 1 4;
+  border-right: 1px solid #808080;
+}
