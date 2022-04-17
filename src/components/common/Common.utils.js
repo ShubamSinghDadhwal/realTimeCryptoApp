@@ -1,4 +1,4 @@
-export const getTradingPairName = (tradingPair) => `${tradingPair.slice(1,4)} / ${tradingPair.slice(4)}`;
+export const getTradingPairName = (tradingPair) => `${tradingPair?.slice(1,4)} / ${tradingPair?.slice(4)}`;
 
 export const roundTo2Digits = (price) => Number(price).toFixed(2);
 
